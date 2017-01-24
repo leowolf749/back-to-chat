@@ -18,13 +18,13 @@ Backbone.sync = function (method, model) {
         const request = new XMLHttpRequest();
         request.open('POST', 'http://api.queencityiron.com/chats');
 
-        let msg = {
-            from: model.get('username'),
+        let message = {
+            from: model.get('from'),
             message: model.get('message'),
         };
 
-        request.send(JSON.stringify(msg));
-        console.log('sending message');
+        request.send(JSON.stringify(message));
+        // console.log('sending message');
     }
 
     if (method === 'read') {

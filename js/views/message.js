@@ -30,7 +30,7 @@ module.exports = Backbone.View.extend({
             li.innerHTML = Mustache.render(
                 template,
                 {
-                    username: m.get('username'),
+                    username: m.get('from'),
                     message: m.get('message'),
                 }
             );

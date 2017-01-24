@@ -2,8 +2,8 @@
 module.exports = Backbone.Model.extend({
     
     defaults: {
-        username: 'iamrobot -_-',
-        message: 'hello',
+        from: 'iamrobot',
+        message: null,
     },
 
     addNewMessage(message) {

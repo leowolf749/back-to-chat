@@ -4,9 +4,10 @@ module.exports = Backbone.Collection.extend({
 
     model: MessageModel,
 
-    createNew: function (newInput) {
+    createNew: function (message, from) {
         const newMessage = new MessageModel;
-        newMessage.set('message', newInput);
+        newMessage.save('message', message);
+        newMessage.save('from', from);
 
         this.add(newMessage);
     }

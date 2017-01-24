@@ -19,13 +19,13 @@ Backbone.sync = function (method, model) {
         const request = new XMLHttpRequest();
         request.open('POST', 'http://api.queencityiron.com/chats');
 
-        let msg = {
-            from: model.get('username'),
+        let message = {
+            from: model.get('from'),
             message: model.get('message'),
         };
 
-        request.send(JSON.stringify(msg));
-        console.log('sending message');
+        request.send(JSON.stringify(message));
+        // console.log('sending message');
     }
 
     if (method === 'read') {
@@ -55,8 +55,8 @@ Backbone.sync = function (method, model) {
 module.exports = Backbone.Model.extend({
     
     defaults: {
-        username: 'iamrobot -_-',
-        message: 'hello',
+        from: 'iamrobot',
+        message: null,
     },
 
     addNewMessage(message) {
@@ -71,9 +71,10 @@ module.exports = Backbone.Collection.extend({
 
     model: MessageModel,
 
-    createNew: function (newInput) {
+    createNew: function (message, from) {
         const newMessage = new MessageModel;
-        newMessage.set('message', newInput);
+        newMessage.save('message', message);
+        newMessage.save('from', from);
 
         this.add(newMessage);
     }
@@ -111,7 +112,7 @@ module.exports = Backbone.View.extend({
             li.innerHTML = Mustache.render(
                 template,
                 {
-                    username: m.get('username'),
+                    username: m.get('from'),
                     message: m.get('message'),
                 }
             );
