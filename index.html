@@ -16,11 +16,12 @@
 
     <script type="x-mustache-template" id="message-template">
         <p>{{ username }}: </p>
-        <p>{{ message }}</p>
+        <p class="msg">{{ message }}</p>
     </script>
 </head>
     
 <body>
+    <div>
     <section class="banner">
         <h4>chatterbox2</h4>
         <input type="text" id="username" placeholder="username">
@@ -32,6 +33,7 @@
         <input type="text" id="message" placeholder="message">
         <button type="button" id="send">send</button> 
     </section>
+    </div>
 </body>
 
 </html>

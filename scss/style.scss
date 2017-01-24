@@ -6,6 +6,74 @@
 @include foundation-grid;
 
 body {
-    background-color: white;
+    background-color: floralwhite;
     color: black;
+    
+    div {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    button {
+        background-color: lightblue;
+    }
+}
+
+.banner {
+    @include grid-row();
+    margin: 50px 0px 20px 0px;
+    
+
+    h4 {
+        @include grid-column(7);
+        font-size: 1.5em;
+        margin: 0px;
+    }
+
+    input {
+        @include grid-column(2.5);
+        height: 25px;
+    }
+
+    button {
+        @include grid-column(2.5);
+        height: 25px;
+    }
+}
+
+.chatbox {
+    background-color: cadetblue;
+    height: 370px;
+    overflow-y: scroll;
+
+    li {
+        list-style-type: none;
+        margin-left: 10px;
+
+        p {
+            display: inline;
+        }
+
+        .msg {
+            color: ghostwhite;
+        }
+    }
+}
+
+.message-box {
+    @include grid-row();
+    height: 30px;
+
+    input {
+        @include grid-column(8);
+        padding: 4px;
+        height: 100%;
+    }
+
+    button {
+        @include grid-column(4);
+        padding: 6px;
+        height: 100%;
+    }
+
 }

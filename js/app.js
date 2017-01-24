@@ -12,3 +12,4 @@ window.addEventListener('load', function () {
     });
     view.render();
 });
+

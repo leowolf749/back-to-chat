@@ -1254,5 +1254,107 @@ button {
         margin-bottom: 0; } }
 
 body {
-  background-color: white;
+  background-color: floralwhite;
   color: black; }
+  body div {
+    width: 70%;
+    margin: 0 auto; }
+  body button {
+    background-color: lightblue; }
+
+.banner {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 50px 0px 20px 0px; }
+  .banner::before, .banner::after {
+    display: table;
+    content: ' '; }
+  .banner::after {
+    clear: both; }
+  .banner h4 {
+    width: 58.33333%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    font-size: 1.5em;
+    margin: 0px; }
+    @media print, screen and (min-width: 40em) {
+      .banner h4 {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    .banner h4:last-child:not(:first-child) {
+      float: right; }
+  .banner input {
+    width: 20.83333%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    height: 25px; }
+    @media print, screen and (min-width: 40em) {
+      .banner input {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    .banner input:last-child:not(:first-child) {
+      float: right; }
+  .banner button {
+    width: 20.83333%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    height: 25px; }
+    @media print, screen and (min-width: 40em) {
+      .banner button {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    .banner button:last-child:not(:first-child) {
+      float: right; }
+
+.chatbox {
+  background-color: cadetblue;
+  height: 370px;
+  overflow-y: scroll; }
+  .chatbox li {
+    list-style-type: none;
+    margin-left: 10px; }
+    .chatbox li p {
+      display: inline; }
+    .chatbox li .msg {
+      color: ghostwhite; }
+
+.message-box {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+  height: 30px; }
+  .message-box::before, .message-box::after {
+    display: table;
+    content: ' '; }
+  .message-box::after {
+    clear: both; }
+  .message-box input {
+    width: 66.66667%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    padding: 4px;
+    height: 100%; }
+    @media print, screen and (min-width: 40em) {
+      .message-box input {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    .message-box input:last-child:not(:first-child) {
+      float: right; }
+  .message-box button {
+    width: 33.33333%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    padding: 6px;
+    height: 100%; }
+    @media print, screen and (min-width: 40em) {
+      .message-box button {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    .message-box button:last-child:not(:first-child) {
+      float: right; }

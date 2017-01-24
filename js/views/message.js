@@ -1,3 +1,4 @@
+const SyncModule = require('../sync');
 
 module.exports = Backbone.View.extend({
     initialize: function () {
