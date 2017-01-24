@@ -6,8 +6,8 @@ module.exports = Backbone.Model.extend({
         message: null,
     },
 
-    addNewMessage(message) {
-        this.set('message', message);
-        this.save();
-    }
+    // addNewMessage(message) {
+    //     this.set('message', message);
+    //     // this.save();
+    // }
 })

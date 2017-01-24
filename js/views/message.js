@@ -11,10 +11,11 @@ module.exports = Backbone.View.extend({
 
     sendNewMessage: function () {
         const newInput = this.el.querySelector('#message').value;
+        const newUser = this.el.querySelector('#username').value;
 
-        this.model.createNew(newInput);
-        this.model.sync('create', this.model);
-        // console.log(newInput);
+        this.model.createNew(newInput, newUser);
+        // this.model.sync('create', this.model);
+        console.log(newInput);
     },
 
     render: function () {

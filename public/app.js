@@ -16,6 +16,8 @@ window.addEventListener('load', function () {
 
 Backbone.sync = function (method, model) {
     if (method === 'create' || method === 'update') {
+        // console.log('frum')
+        // console.log(model.get('from'));
         const request = new XMLHttpRequest();
         request.open('POST', 'http://api.queencityiron.com/chats');
 
@@ -59,10 +61,10 @@ module.exports = Backbone.Model.extend({
         message: null,
     },
 
-    addNewMessage(message) {
-        this.set('message', message);
-        this.save();
-    }
+    // addNewMessage(message) {
+    //     this.set('message', message);
+    //     // this.save();
+    // }
 })
 },{}],3:[function(require,module,exports){
 const MessageModel = require('./message');
@@ -72,11 +74,12 @@ module.exports = Backbone.Collection.extend({
     model: MessageModel,
 
     createNew: function (message, from) {
-        const newMessage = new MessageModel;
-        newMessage.save('message', message);
-        newMessage.save('from', from);
+        const newMessage = new MessageModel();
+        newMessage.set('message', message);
+        newMessage.set('from', from);
 
         this.add(newMessage);
+        newMessage.save();
     }
 });
 },{"./message":2}],4:[function(require,module,exports){
@@ -93,10 +96,11 @@ module.exports = Backbone.View.extend({
 
     sendNewMessage: function () {
         const newInput = this.el.querySelector('#message').value;
+        const newUser = this.el.querySelector('#username').value;
 
-        this.model.createNew(newInput);
-        this.model.sync('create', this.model);
-        // console.log(newInput);
+        this.model.createNew(newInput, newUser);
+        // this.model.sync('create', this.model);
+        console.log(newInput);
     },
 
     render: function () {

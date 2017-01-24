@@ -15,6 +15,8 @@ window.addEventListener('load', function () {
 
 Backbone.sync = function (method, model) {
     if (method === 'create' || method === 'update') {
+        // console.log('frum')
+        // console.log(model.get('from'));
         const request = new XMLHttpRequest();
         request.open('POST', 'http://api.queencityiron.com/chats');
 
