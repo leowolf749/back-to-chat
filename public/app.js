@@ -14,14 +14,48 @@ window.addEventListener('load', function () {
     view.render();
 });
 
+Backbone.sync = function (method, model) {
+    if (method === 'create' || method === 'update') {
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://api.queencityiron.com/chats');
 
-},{"./models/messagelist":3,"./views/message":5}],2:[function(require,module,exports){
+        let msg = {
+            from: model.get('username'),
+            message: model.get('message'),
+        };
 
+        request.send(JSON.stringify(msg));
+        console.log('sending message');
+    }
+
+    if (method === 'read') {
+        const request = new XMLHttpRequest();
+        request.open('GET', 'http://api.queencityiron.com/chats');
+        request.addEventListener('load', function () {
+            const response = JSON.parse(request.responseText);
+
+            for (let i = 0; i < response.chats.length; i++) {
+                // 
+                // msg = new ChatModel(); <=== make a new ChatModel for each of response.chats
+                // msg.set('from', response.chats[i].from);
+                // model.add(that ChatModel from above)
+            }
+            // model.set('name', response.name);
+            // model.set('attendees', response.attendees);
+            // model.set('when', response.when);
+            // model.trigger('change');
+        });
+        request.send();
+    }
+};
+
+
+},{"./models/messagelist":3,"./views/message":4}],2:[function(require,module,exports){
 
 module.exports = Backbone.Model.extend({
     
     defaults: {
-        username: 'chatterbot451',
+        username: 'iamrobot -_-',
         message: 'hello',
     },
 
@@ -46,42 +80,6 @@ module.exports = Backbone.Collection.extend({
 });
 },{"./message":2}],4:[function(require,module,exports){
 
-module.exports = Backbone.sync = function (method, model) {
-    if (method === 'create' || method === 'update') {
-        const request = new XMLHttpRequest();
-        request.open('POST', 'http://api.queencityiron.com/chats');
-
-        let msg = {
-            from: model.get('username'),
-            message: model.get('message'),
-        };
-
-        request.send(JSON.stringify(msg));
-    }
-
-    if (method === 'read') {
-        const request = new XMLHttpRequest();
-        request.open('GET', 'http://api.queencityiron.com/chats');
-        request.addEventListener('load', function () {
-            const response = JSON.parse(request.responseText);
-
-            for (let i = 0; i < response.chats.length; i++) {
-                // 
-                // msg = new ChatModel(); <=== make a new ChatModel for each of response.chats
-                // msg.set('from', response.chats[i].from);
-                // model.add(that ChatModel from above)
-            }
-            // model.set('name', response.name);
-            // model.set('attendees', response.attendees);
-            // model.set('when', response.when);
-            // model.trigger('change');
-        });
-        request.send();
-    }
-};
-},{}],5:[function(require,module,exports){
-const SyncModule = require('../sync');
-
 module.exports = Backbone.View.extend({
     initialize: function () {
         this.model.on('change', this.render, this);
@@ -96,7 +94,8 @@ module.exports = Backbone.View.extend({
         const newInput = this.el.querySelector('#message').value;
 
         this.model.createNew(newInput);
-        console.log(newInput);
+        this.model.sync('create', this.model);
+        // console.log(newInput);
     },
 
     render: function () {
@@ -121,4 +120,4 @@ module.exports = Backbone.View.extend({
         }
     }
 });
-},{"../sync":4}]},{},[1]);
+},{}]},{},[1]);

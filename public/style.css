@@ -1319,8 +1319,11 @@ body {
     margin-left: 10px; }
     .chatbox li p {
       display: inline; }
+    .chatbox li .user {
+      font-size: 1.8em; }
     .chatbox li .msg {
-      color: ghostwhite; }
+      color: ghostwhite;
+      font-size: 2em; }
 
 .message-box {
   max-width: 75rem;

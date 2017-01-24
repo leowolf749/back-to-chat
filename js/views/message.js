@@ -1,4 +1,3 @@
-const SyncModule = require('../sync');
 
 module.exports = Backbone.View.extend({
     initialize: function () {
@@ -14,7 +13,8 @@ module.exports = Backbone.View.extend({
         const newInput = this.el.querySelector('#message').value;
 
         this.model.createNew(newInput);
-        console.log(newInput);
+        this.model.sync('create', this.model);
+        // console.log(newInput);
     },
 
     render: function () {
