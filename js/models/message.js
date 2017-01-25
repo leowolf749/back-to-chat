@@ -2,7 +2,7 @@
 module.exports = Backbone.Model.extend({
     
     defaults: {
-        from: 'iamrobot',
+        from: '',
         message: null,
     },
 

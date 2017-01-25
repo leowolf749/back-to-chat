@@ -13,7 +13,6 @@ window.addEventListener('load', function () {
         model: list,
     });
 
-
     view.render();
 });
 

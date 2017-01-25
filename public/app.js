@@ -14,7 +14,6 @@ window.addEventListener('load', function () {
         model: list,
     });
 
-
     view.render();
 });
 
@@ -61,7 +60,7 @@ Backbone.sync = function (method, model) {
 module.exports = Backbone.Model.extend({
     
     defaults: {
-        from: 'iamrobot',
+        from: '',
         message: null,
     },
 
